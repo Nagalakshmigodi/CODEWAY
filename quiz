@@ -1,0 +1,50 @@
+
+def quiz():
+    questions = [
+        {
+            "question": "The United Nations declared 1993 as a year of the",
+            "options": ["disabled", "forests", "girl child", "indigenous people"],
+            "answer": "indigenous people"
+        },
+        {
+            "question": "The decade 1981-1990 was observed as International Decade for",
+            "options": ["Peace", "Drinking Water Supply and Sanitation", "Women","Children"],
+            "answer": "Drinking Water Supply and Sanitation"
+        },
+        {
+            "question": "Which year is observed as Poverty Eradication Year by SAARC?",
+            "options": [1998,1997,1996,1995],
+            "answer": 1995
+        }
+    ]
+
+    while True:
+        score = 0
+        print("Welcome to the Quiz Game!")
+
+        for i, q in enumerate(questions, 1):
+            print(f"\nQuestion {i}: {q['question']}")
+            for j, option in enumerate(q['options'], 1):
+                print(f"{j}. {option}")
+
+            user_answer = input("Your answer (enter the option number): ")
+            if user_answer.isdigit() and 1 <= int(user_answer) <= len(q['options']):
+                user_answer = q['options'][int(user_answer) - 1]
+                if user_answer == q['answer']:
+                    print("Correct!")
+                    score += 1
+                else:
+                    print(f"Wrong! The correct answer is: {q['answer']}")
+            else:
+                print("Invalid input. Skipping this question.")
+
+            print(f"Your current score is: {score}/{i}")
+
+        print(f"\nQuiz completed! Your final score is: {score}/{len(questions)}")
+
+        play_again = input("Do you want to play again? (yes/no): ")
+        if play_again.lower() != "yes":
+            print("Thank you for playing!")
+            break
+
+quiz()
